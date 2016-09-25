@@ -30,4 +30,19 @@ class HiddenNeuron extends BaseNeuron {
 		return weightReturn;
 	}
 
+	@Override
+	public float activationFunction(float input) {
+		value = Math.max(0,input);
+		return value;
+	}
+
+	@Override
+	public float feedForward(float[] inputs, float[] weights) {
+		float outputValue = 0;
+		for (int i = 0; i < inputs.length; i++) {
+			outputValue += inputs[i] * weights[i];
+		}
+		return activationFunction(outputValue);
+	}
+
 }

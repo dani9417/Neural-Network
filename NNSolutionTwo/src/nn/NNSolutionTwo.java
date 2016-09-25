@@ -34,11 +34,11 @@ public class NNSolutionTwo {
 
         for(int i = 0; i < inputValueCount; i++) {
             float[] inputValues = stringToFloatArray(br.readLine());
-            //outPutValues.add(nn.calculateOutput(inputValues));
+            outPutValues.add(nn.calculateOutput(inputValues));
         }
 
 
-        nn.output();
+        //nn.output();
     }
 
     private static int[] stringToIntegerArray(String inputArchitecture) {

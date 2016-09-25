@@ -32,4 +32,20 @@ class OutputNeuron extends BaseNeuron {
 		return weightReturn;
 	}
 
+	@Override
+	public float activationFunction(float input) {
+		value = input;
+		return value;
+	}
+
+	@Override
+	public float feedForward(float[] inputs, float[] weights) {
+		float outputValue = 0;
+		for (int i = 0; i < inputs.length; i++) {
+			outputValue += inputs[i] * weights[i];
+		}
+
+		return outputValue;
+	}
+
 }

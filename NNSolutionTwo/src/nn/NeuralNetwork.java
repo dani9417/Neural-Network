@@ -31,7 +31,7 @@ class NeuralNetwork {
 			neurons[i] = Integer.parseInt(inputStringArray[i]);
 		}
 
-		neuronMatrix = new NeuronMatrix<>(neurons);
+		neuronMatrix = new NeuronMatrix(neurons);
 
 			
 		initInputLayer();
@@ -63,7 +63,8 @@ class NeuralNetwork {
 
 	private void initInputLayer() {
 		for(int i = 0; i < neurons[0]; i++) {
-			inputs.add(new InputNeuron());
+			//inputs.add(new InputNeuron());
+
 		}
 		
 	}
@@ -96,8 +97,9 @@ class NeuralNetwork {
 		this.weightMatrix = wm;
 	}
 
-    void calculateOutput() {
-
+    float[] calculateOutput(float[] inputValues) {
+		neuronMatrix.setInputNeuron(inputValues);
+		return new float[2];
     }
 
 }
