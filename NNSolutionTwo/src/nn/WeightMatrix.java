@@ -1,10 +1,13 @@
 package nn;
 
 
+import java.util.Arrays;
+
 public class WeightMatrix {
     private int[][] weights;
     int matrixHeightCount;
     int maxMatrixWidth;
+    int currentRow = 0;
 
     WeightMatrix(int[] neurons) {
         int matrixHeightCount = matrixHeight(neurons);
@@ -27,5 +30,21 @@ public class WeightMatrix {
             neuronCount += neurons[i];
         }
         return neuronCount;
+    }
+
+    public int[][] getWeights() {
+        if(weights != null)
+            return weights;
+
+        return new int[][] {new int[] {0}};
+    }
+
+    public void setWeights(int[] weightsRow) {
+        weights[currentRow++] = weightsRow;
+    }
+
+    public void listWeights() {
+        for(int[] row : weights)
+            System.out.println(Arrays.toString(row));
     }
 }

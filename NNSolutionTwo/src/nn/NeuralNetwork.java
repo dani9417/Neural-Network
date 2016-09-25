@@ -77,6 +77,12 @@ class NeuralNetwork {
 		
 	}
 
-	
 
+	public int getInputCount() {
+		int sum = 0;
+		for(int i = 1; i < neurons.length; i++)
+			sum += neurons[i];
+
+		return sum;
+	}
 }
