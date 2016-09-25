@@ -1,19 +1,28 @@
 package nn;
 
 
-import java.lang.reflect.Array;
+import java.util.Arrays;
 
-public class NeuronMatrix<T> {
+class NeuronMatrix<T> {
+    private int rows;
+    private int columns;
+    private Object neurons[][];
 
-    private final Class<? extends T> cls;
+    NeuronMatrix(int[] inputArchitecture) {
+        this.columns = inputArchitecture.length;
+        Arrays.sort(inputArchitecture);
+        this.rows = inputArchitecture[inputArchitecture.length - 1];
 
-    public NeuronMatrix (Class<? extends T> cls) {
-        this.cls = cls;
-    }
-
-    public void arrayExample() {
         @SuppressWarnings("unchecked")
-        T[][] array = (T[][]) Array.newInstance(cls,10,20);
-        System.out.println(array.length + " " + array[0].length+ " " + array.getClass());
+        T[][] array = (T[][]) new Object[rows][columns];
+
+        neurons = array;
+
+
     }
+
+    public BaseNeuron getNeuron(int x, int y) {
+        return (BaseNeuron) neurons[x][y];
+    }
+
 }

@@ -12,7 +12,10 @@ class NeuralNetwork {
 	
 	private int numberOfLayers;
 	private int[] neurons;
-	
+
+	private WeightMatrix weightMatrix;
+	private NeuronMatrix<BaseNeuron> neuronMatrix;
+
 	NeuralNetwork(String inputString) {
 		inputs = new ArrayList<>();
 		hiddens = new ArrayList<>();
@@ -27,6 +30,9 @@ class NeuralNetwork {
 		for(int i = 0; i < numberOfLayers; i++) {
 			neurons[i] = Integer.parseInt(inputStringArray[i]);
 		}
+
+		neuronMatrix = new NeuronMatrix<>(neurons);
+
 			
 		initInputLayer();
 		initHiddenLayer();
@@ -70,7 +76,7 @@ class NeuralNetwork {
 				System.out.println(hid.listWeights());
 			}
 		}
-		
+
 		for(BaseNeuron b : outputs) {
 			System.out.println(b.listWeights());
 		}
@@ -85,4 +91,13 @@ class NeuralNetwork {
 
 		return sum;
 	}
+
+	public void setWeightMatrix(WeightMatrix wm) {
+		this.weightMatrix = wm;
+	}
+
+    void calculateOutput() {
+
+    }
+
 }
