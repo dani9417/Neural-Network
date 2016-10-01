@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NNSolutionOne.iml" filepath="$PROJECT_DIR$/NNSolutionOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../NNSolutionTwo/NNSolutionTwo.iml" filepath="$PROJECT_DIR$/../NNSolutionTwo/NNSolutionTwo.iml" />
     </modules>
   </component>
 </project>
