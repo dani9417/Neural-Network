@@ -8,12 +8,14 @@ class InputParser {
     ArrayList<String> inputString;
     NeuralNetwork neuralNetwork;
 
-    InputParser(ArrayList<String> inputString) {
+    InputParser(ArrayList<String> inputString) throws Exception {
         this.inputString = inputString;
 
         neuralNetwork = new NeuralNetwork(stringToIntegerArray(inputString.get(0)));
         neuralNetwork.setWeights(weightList());
         neuralNetwork.initWeightAndBias();
+
+        neuralNetwork.showSomeThing();
 
 
     }

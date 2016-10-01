@@ -52,4 +52,10 @@ class NeuralNetwork {
 	public void setWeights(ArrayList<float[]> weights) {
 		this.weights = weights;
 	}
+
+	public void showSomeThing() throws Exception {
+		WeightMatrix m1 = biasVertices.get(0);
+		WeightMatrix m2 = biasVertices.get(0);
+		System.out.println("m1.dotProduct(m1,m2) = " + m1.dotProduct(m1, m2));
+	}
 }

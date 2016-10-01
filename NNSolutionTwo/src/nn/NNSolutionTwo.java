@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class NNSolutionTwo {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         InputParser inputParser;
 
@@ -18,7 +18,7 @@ public class NNSolutionTwo {
             inputString.add(nextString);
         }
 
-        inputParser = new InputParser(inputString);
+        inputParser = new    InputParser(inputString);
 
 
 
