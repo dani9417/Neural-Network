@@ -4,10 +4,10 @@ import java.util.Random;
 
 class HiddenNeuron extends BaseNeuron {
 
-	HiddenNeuron(int prevLevelNeuronCount) {
-		weights = new double[prevLevelNeuronCount];
+	HiddenNeuron() {
+		//weights = new double[prevLevelNeuronCount];
 		
-		InitWeights();
+		//InitWeights();
 	}
 	
 	private void InitWeights() {

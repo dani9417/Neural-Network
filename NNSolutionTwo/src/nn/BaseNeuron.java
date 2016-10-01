@@ -8,6 +8,10 @@ abstract class BaseNeuron {
 
 	public abstract float feedForward(float[] inputs, float[] weights);
 
+	public  void setValue(float val) {
+		value = val;
+	}
+
 
 
 	

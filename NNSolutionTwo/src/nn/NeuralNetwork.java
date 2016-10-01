@@ -34,14 +34,14 @@ class NeuralNetwork {
 		neuronMatrix = new NeuronMatrix(neurons);
 
 			
-		initInputLayer();
-		initHiddenLayer();
-		initOutputLayer();
+		//initInputLayer();
+		//initHiddenLayer();
+		//initOutputLayer();
 
 
 	}
 
-	private void initHiddenLayer() {
+	/*private void initHiddenLayer() {
 		ArrayList<HiddenNeuron> hdn;
 		for(int i = 1; i < numberOfLayers - 1; i++) {
 			hdn = new ArrayList<>();
@@ -52,22 +52,22 @@ class NeuralNetwork {
 			hiddens.add(hdn);
 		}
 		
-	}
+	}*/
 
-	private void initOutputLayer() {
+	/*private void initOutputLayer() {
 		for(int i = 0; i < neurons[neurons.length-1]; i++) {
 			outputs.add(new OutputNeuron(neurons[neurons.length - 2] + 1));
 		}
 		
-	}
+	}*/
 
-	private void initInputLayer() {
+	/*private void initInputLayer() {
 		for(int i = 0; i < neurons[0]; i++) {
 			//inputs.add(new InputNeuron());
 
 		}
 		
-	}
+	}*/
 
 	void output() {
 		System.out.println(inputString);
@@ -85,7 +85,7 @@ class NeuralNetwork {
 	}
 
 
-	public int getInputCount() {
+	int getInputCount() {
 		int sum = 0;
 		for(int i = 1; i < neurons.length; i++)
 			sum += neurons[i];
@@ -93,12 +93,19 @@ class NeuralNetwork {
 		return sum;
 	}
 
-	public void setWeightMatrix(WeightMatrix wm) {
+	void setWeightMatrix(WeightMatrix wm) {
 		this.weightMatrix = wm;
 	}
 
     float[] calculateOutput(float[] inputValues) {
 		neuronMatrix.setInputNeuron(inputValues);
+
+		for (int y = 0; y < neuronMatrix.getRow(); y++) {
+			for (int x = 0; x < neuronMatrix.getRowLength(y); x++) {
+				neuronMatrix.setNeuronValue(x,y);
+			}
+		}
+
 		return new float[2];
     }
 

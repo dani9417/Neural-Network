@@ -5,10 +5,8 @@ import java.util.Random;
 
 class OutputNeuron extends BaseNeuron {
 
-	OutputNeuron(int prevLevelNeuronCount) {
-		weights = new double[prevLevelNeuronCount];
+	OutputNeuron() {
 
-		InitWeights();
 	}
 	
 	private void InitWeights() {

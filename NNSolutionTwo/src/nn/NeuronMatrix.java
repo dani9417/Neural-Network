@@ -15,7 +15,7 @@ class NeuronMatrix<T> {
         this.rows = maxNumberOfNeurons(inputArchitecture);
 
         @SuppressWarnings("unchecked")
-        T[][] array = (T[][]) new Object[rows][columns];
+        T[][] array = (T[][]) new BaseNeuron[rows][columns];
 
         neurons = array;
 
@@ -23,9 +23,13 @@ class NeuronMatrix<T> {
     }
 
     private void initMatrix() {
-        for (int i = 0; i < architecture.length; i++) {
+        for (int i = 1; i < architecture.length; i++) {
             for (int j = 0; j < architecture[i]; j++) {
-                // TODO: 2016.09.25. add new Neuron
+                if(i < architecture.length)
+                    neurons[i][j] = new HiddenNeuron();
+                else
+                    neurons[i][j] = new OutputNeuron();
+
             }
         }
     }
@@ -49,4 +53,26 @@ class NeuronMatrix<T> {
         }
     }
 
+
+    public int getRow() {
+        return rows;
+    }
+
+    int getRowLength(int y) {
+        return neurons[y].length;
+    }
+
+    public void setNeuronValue(int x, int y) {
+        BaseNeuron bn = (BaseNeuron) neurons[x][y];
+        bn.setValue(sum(x,y));
+        neurons[x][y] = bn;
+    }
+
+    private float sum(int x, int y) {
+        int s = 0;
+        for (int i = 0; i < neurons[y].length; i++) {
+
+        }
+        return 0;
+    }
 }
