@@ -1,25 +1,55 @@
 package nn;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 class InputParser {
-    ArrayList<String> inputString;
-    NeuralNetwork neuralNetwork;
+    private ArrayList<String> inputString;
+    private NeuralNetwork neuralNetwork;
+    private int inputCount;
+    private ArrayList<float[]> inputs;
+    private ArrayList<WeightMatrix> outputs;
 
     InputParser(ArrayList<String> inputString) throws Exception {
         this.inputString = inputString;
 
+
         neuralNetwork = new NeuralNetwork(stringToIntegerArray(inputString.get(0)));
         neuralNetwork.setWeights(weightList());
-        neuralNetwork.initWeightAndBias();
+        neuralNetwork.initWeightAndBiasValues();
 
-        neuralNetwork.showSomeThing();
+        //neuralNetwork.listWeightAndBiasMatrices();
+
+        this.inputCount = Integer.parseInt(inputString.get(neuralNetwork.getWeightRowCount() + 1));
+
+        this.inputs = new ArrayList<>(inputCount);
+        this.outputs = new ArrayList<>(inputCount);
+
+        convertInputStrings(neuralNetwork.getWeightRowCount() + 2);
+
+        for (int i = 0; i < inputs.size(); i++) {
+            outputs.add(neuralNetwork.calculateOutput(2, new WeightMatrix(2, inputs.get(i))));
+        }
+
+        printOutput();
+
+
 
 
     }
 
+    private void printOutput() {
+        System.out.println(inputCount);
+
+        for (WeightMatrix o : outputs)
+            System.out.println(o.toString());
+    }
+
+    private void convertInputStrings(int startingIndex) {
+        for (int i = startingIndex; i < inputString.size(); i++) {
+            inputs.add(stringToFloatArray(inputString.get(i)));
+        }
+    }
 
 
     int[] stringToIntegerArray(String input) {
@@ -44,6 +74,7 @@ class InputParser {
 
         return floats;
     }
+
 
     ArrayList<float[]> weightList() {
         ArrayList<float[]> weights = new ArrayList<>();

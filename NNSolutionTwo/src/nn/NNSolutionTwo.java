@@ -18,7 +18,7 @@ public class NNSolutionTwo {
             inputString.add(nextString);
         }
 
-        inputParser = new    InputParser(inputString);
+        inputParser = new InputParser(inputString);
 
 
 

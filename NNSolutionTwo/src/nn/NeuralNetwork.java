@@ -5,11 +5,11 @@ import java.util.Arrays;
 
 class NeuralNetwork {
 	private int[] architecture;
-	ArrayList<float[]> weights;
-	ArrayList<WeightMatrix> weightMatrices;
-	ArrayList<WeightMatrix> biasVertices;
+	private ArrayList<float[]> weights;
+	private ArrayList<WeightMatrix> weightMatrices;
+	private ArrayList<WeightMatrix> biasVertices;
 
-	public NeuralNetwork(int[] architecture) {
+	NeuralNetwork(int[] architecture) {
 		this.architecture = architecture;
 		weightMatrices = new ArrayList<>(this.architecture.length - 1);
 		biasVertices = new ArrayList<>(this.architecture.length - 1);
@@ -17,7 +17,7 @@ class NeuralNetwork {
 
 	}
 
-	void initWeightAndBias() {
+	void initWeightAndBiasValues() {
 		int actRow = 0;
 		int index = 1;
 		for(int i = 1; i < architecture.length; i++) {
@@ -49,13 +49,32 @@ class NeuralNetwork {
 
 
 
-	public void setWeights(ArrayList<float[]> weights) {
+	void setWeights(ArrayList<float[]> weights) {
 		this.weights = weights;
 	}
 
-	public void showSomeThing() throws Exception {
-		WeightMatrix m1 = biasVertices.get(0);
-		WeightMatrix m2 = biasVertices.get(0);
-		System.out.println("m1.dotProduct(m1,m2) = " + m1.dotProduct(m1, m2));
+	void listWeightAndBiasMatrices() throws Exception {
+		for (WeightMatrix wm : weightMatrices)
+			System.out.println(wm.toString());
+
+		for(WeightMatrix vm : biasVertices)
+			System.out.println(vm.toString());
+
+
+	}
+
+	WeightMatrix calculateOutput(int depth, WeightMatrix input) throws Exception {
+		WeightMatrix bias = biasVertices.get(depth - 1);
+		WeightMatrix weight = weightMatrices.get(depth - 1);
+
+		if(depth == 1) {
+			return bias.matrixAddition(weight.matrixProduct(input));
+		}
+		else {
+			return bias.matrixAddition(weight.matrixProduct(calculateOutput(depth-1, input).activatonFunction()));
+
+		}
+
+
 	}
 }
